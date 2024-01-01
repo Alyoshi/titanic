@@ -1,5 +1,4 @@
 function calculateProbability() {
-    console.log(apiUrl);
     // Gather user input
     const pclass = document.getElementById('pclass').value;
     const female = document.getElementById('female').value;
@@ -13,10 +12,8 @@ function calculateProbability() {
         Age: parseInt(age),
         Fare: parseInt(fare),
     };
-    console.log(requestData);
-    console.log(JSON.stringify(requestData));
     // Make the API request
-    fetch(apiUrl, {
+    fetch('https://titanic-survival-probability.onrender.com/:5000/prediction', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
