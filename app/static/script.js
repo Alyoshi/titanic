@@ -15,7 +15,7 @@ function calculateProbability() {
     console.log(requestData);
     console.log(JSON.stringify(requestData));
     // Make the API request
-    fetch('http://127.0.0.1:80/prediction', {
+    fetch(apiUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
