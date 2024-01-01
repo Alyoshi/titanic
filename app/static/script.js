@@ -1,4 +1,5 @@
 function calculateProbability() {
+    console.log(apiUrl);
     // Gather user input
     const pclass = document.getElementById('pclass').value;
     const female = document.getElementById('female').value;
