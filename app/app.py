@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 import joblib
 import traceback
 import pandas as pd
-import uvicorn
 
 app = FastAPI()
 model = joblib.load("titanic-predict.pkl")
