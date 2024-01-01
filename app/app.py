@@ -24,9 +24,9 @@ def predict():
 
 @app.route('/', methods=['GET'])
 def get():
-    return render_template('index.html', api_url=os.environ.get('API_URL'))
+    return render_template('index.html', api_url='https://titanic-survival-probability.onrender.com/prediction')
 
 if __name__ == '__main__':
     model = joblib.load('titanic-predict.pkl') 
     print ('Model loaded')
-    app.run(debug=True)
+    app.run(port = 80, debug=True)
