@@ -13,7 +13,7 @@ function calculateProbability() {
         Fare: parseInt(fare),
     };
     // Make the API request
-    fetch('https://titanic-survival-probability.onrender.com/:5000/prediction', {
+    fetch('https://titanic-survival-probability.onrender.com/prediction', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

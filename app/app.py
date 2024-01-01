@@ -29,4 +29,4 @@ def get():
 if __name__ == '__main__':
     model = joblib.load('titanic-predict.pkl') 
     print ('Model loaded')
-    app.run(debug=True)
+    app.run(port=80, debug=True)
