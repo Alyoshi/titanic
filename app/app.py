@@ -1,32 +1,30 @@
-from flask import Flask, request, jsonify, render_template
-from flask_cors import CORS
-import sys
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import joblib
 import traceback
 import pandas as pd
+import uvicorn
 
-app = Flask(__name__)
-CORS(app)
+app = FastAPI()
+model = joblib.load("titanic-predict.pkl")
+print("Model loaded")
 
-@app.route('/prediction', methods=['POST'])
-def predict():
+# Allow all origins for CORS (insecure, should be restricted in production)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.post("/predict")
+async def predict(request_data: dict):
     try:
-        json_ = request.json
-        print(json_)
-        query = pd.DataFrame([json_])
+        query = pd.DataFrame([request_data])
         predict_array = model.predict_proba(query)
         predict = round(predict_array[0][1], 2)
-        print('Predicted survival chance is ' + str(predict * 100) + '%') 
-        return jsonify({'prediction': predict})
-    except:
-        return jsonify({'trace': traceback.format_exc()})
-
-@app.route('/', methods=['GET'])
-def get():
-    return render_template('index.html')
-
-if __name__ == '__main__':
-    port = 80 
-    model = joblib.load('titanic-predict.pkl') 
-    print ('Model loaded')
-    app.run(host='0.0.0.0', port=port, debug=True)
+        print(f"Predicted survival chance is {predict * 100}%")
+        return {"prediction": predict}
+    except Exception as e:
+        return {"trace": traceback.format_exc()}
