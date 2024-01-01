@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Survival Probability Calculator</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Titanic Survival Probability Calculator</h1>
+        <form id="titanicForm">
+            <div class="form-group">
+                <label for="pclass">Ticketkategorie</label>
+                <select class="form-control" id="pclass" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="female">Geschlecht</label>
+                <select class="form-control" id="female" required>
+                    <option value="true">Frau</option>
+                    <option value="false">Mann</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="age">Alter</label>
+                <input type="number" class="form-control" id="age" min=" 1" max="130" required>
+            </div>
+            <div class="form-group">
+                <label for="fare">Ticketpreis</label>
+                <input type="number" class="form-control" id="fare" min="0" max="100" required>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="calculateProbability()">Überlebenswahrscheinlichkeit berechnen</button>
+        </form>
+        <div id="result" class="mt-4"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
+</body>
+</html>
