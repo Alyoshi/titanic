@@ -1,4 +1,3 @@
-import os
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import sys
@@ -27,6 +26,7 @@ def get():
     return render_template('index.html')
 
 if __name__ == '__main__':
+    port = 80 
     model = joblib.load('titanic-predict.pkl') 
     print ('Model loaded')
-    app.run(port=80, debug=True)
+    app.run(host='0.0.0.0', port=port, debug=True)

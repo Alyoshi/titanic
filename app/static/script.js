@@ -12,6 +12,8 @@ function calculateProbability() {
         Age: parseInt(age),
         Fare: parseInt(fare),
     };
+    console.log(requestData);
+    console.log(JSON.stringify(requestData));
     // Make the API request
     fetch('https://titanic-survival-probability.onrender.com/prediction', {
         method: 'POST',
