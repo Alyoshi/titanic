@@ -27,3 +27,7 @@ async def predict(request_data: dict):
         return {"prediction": predict}
     except Exception as e:
         return {"trace": traceback.format_exc()}
+
+@app.get("/health")
+def health():
+    return 'Ok'
