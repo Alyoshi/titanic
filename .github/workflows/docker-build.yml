@@ -19,4 +19,4 @@ jobs:
       - name: Build and push Docker image
         run: |
           docker build -t titanic:latest .
-          docker titanic:latest
+          docker push titanic:latest
