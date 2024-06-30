@@ -1,11 +1,13 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-import joblib
+from xgboost import XGBClassifier
 import traceback
 import pandas as pd
 
 app = FastAPI()
-model = joblib.load("titanic-predict.pkl")
+
+model = XGBClassifier()
+model.load_model('titanic.json')
 print("Model loaded")
 
 # Allow all origins for CORS (insecure, should be restricted in production)
